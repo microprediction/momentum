@@ -1,7 +1,6 @@
 from momentum.objects import RunningVariance, RunningKurtosis
 from momentum.functions import var_init, var_update, kurtosis_init, kurtosis_update
 import os
-import pprint
 
 # Tested locally but not
 
@@ -11,22 +10,21 @@ def test_var_against_each_other():
     else:
         import numpy as np
         from statistics import variance, pvariance
+        xs = list(np.random.randn(100))
+        machine = RunningVariance()
+        m = var_init()
+        for x in xs:
+            machine.update(value=x)
+            m = var_update(m,x)
+        dv1 = m['var']-machine.var()
+        dv2 = m['pvar']-machine.pvar()
+        assert(abs(dv1)<1e-8)
+        assert(abs(dv2) < 1e-8)
 
-    xs = list(np.random.randn(100))
-    machine = RunningVariance()
-    m = var_init()
-    for x in xs:
-        machine.update(value=x)
-        m = var_update(m,x)
-    dv1 = m['var']-machine.var()
-    dv2 = m['pvar']-machine.pvar()
-    assert(abs(dv1)<1e-8)
-    assert(abs(dv2) < 1e-8)
-
-    du1 = m['mean'] - machine.mean
-    du2 = m['std'] - machine.std()
-    assert(abs(du1)<1e-8)
-    assert(abs(du2) < 1e-8)
+        du1 = m['mean'] - machine.mean
+        du2 = m['std'] - machine.std()
+        assert(abs(du1)<1e-8)
+        assert(abs(du2) < 1e-8)
 
 
 def test_kurtosis():
