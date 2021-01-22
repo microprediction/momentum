@@ -21,6 +21,7 @@ Running mean, variance, kurtosis and skew
         m = var_update(m,x)
     pprint(m)
     
+    
 ### Usage: running mean, var, kurtosis and skew 
 
     from momentum import kurtosis_init, kurtosis_update
@@ -30,6 +31,7 @@ Running mean, variance, kurtosis and skew
         m = kurtosis_update(m,x)
     pprint(m)
     
-That's all folks. 
+    
+File an issue if you need more help using this. 
     
     
