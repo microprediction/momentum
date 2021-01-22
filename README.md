@@ -1,2 +1,2 @@
 # momentum
-Running moment calculations
+Simple, class-free running moment calculations where state is trivially serializable. 
