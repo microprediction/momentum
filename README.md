@@ -13,7 +13,7 @@ Running mean, variance, kurtosis and skew
 
 ### Usage: running mean, var
 
-    from momentum import kurtosis_init, kurtosis_update
+    from momentum import var_init, var_update
     from pprint import pprint
     
     m = var_init()
