@@ -1,11 +1,10 @@
 # momentum ![tests](https://github.com/microprediction/momentum/workflows/tests/badge.svg) ![deploy](https://github.com/microprediction/momentum/workflows/deploy/badge.svg)
-A mini-package for running mean, variance, kurtosis and skew
+A mini-package for computing the running mean, variance, kurtosis and skew
 
 - No dependencies ... not even numpy.
 - No classes ... unless you want them.
 - State is a dict, for trivial serialization. 
 - Tested against scipy, creme, statistics
-- Includes population variance
 
 ### Install 
 
