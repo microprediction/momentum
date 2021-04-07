@@ -1,5 +1,5 @@
 # momentum
-Running mean, variance, kurtosis and skew
+A tiny package with running mean, variance, kurtosis and skew.
 
 - No dependencies ... not even numpy.
 - No classes ... unless you want them.

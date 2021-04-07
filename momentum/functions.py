@@ -43,3 +43,32 @@ def kurtosis_update(m:dict,x:float)->dict:
     return m
 
 
+def forgettingvar_init(alpha:float, burnin=10)->dict:
+    """
+    :param alpha:  How much to use the most recent observation
+    :param burnin: How many obs to use standard variance calc for
+    :return:
+    """
+    assert 0<=alpha<=1
+    state = var_init()
+    state.update({'alpha':alpha,'burnin':burnin})
+    return state
+
+
+def forgettingvar_update(m:dict,x:float)->dict:
+    if m['count'] < m['burnin']:
+        alpha = m['alpha']
+        m = var_update(m,x)
+        m['alpha'] = alpha
+        return m
+    else:
+        m['count'] +=1
+        alpha = m['alpha']
+        m['var'] = (1-alpha)*(m['var'] + alpha*((x-m['mean'])**2))
+        m['mean'] = (1-alpha)*m['mean'] + alpha*x
+        m['pvar'] = ((m['count']-1)/m['count']) *m['var'] # Not sure this really makes sense :)
+        if m.get('M2'):
+            del m['M2']
+        m['std'] = math.sqrt(m['var']) if m['var'] > 0 else 0
+        return m
+
