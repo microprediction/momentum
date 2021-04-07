@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-# momentum
-A tiny package with running mean, variance, kurtosis and skew.
-=======
 # momentum ![tests](https://github.com/microprediction/momentum/workflows/tests/badge.svg) ![deploy](https://github.com/microprediction/momentum/workflows/deploy/badge.svg)
 A mini-package for computing the running mean, variance, kurtosis and skew
->>>>>>> 0d8dd7ef84238d4b46b04eb1877dcb9041bfc353
 
 - No dependencies ... not even numpy.
 - No classes ... unless you want them.
