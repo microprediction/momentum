@@ -44,12 +44,14 @@ def kurtosis_update(m: dict, x: float) -> dict:
     return m
 
 
-def rvar(m: dict, x: float = None, alpha=0.01, n=10):
-    """ Mimics the skater style where we pass {} to initialize """
+def rvar(m: dict, x: float = None, rho=0.01, n=10):
+    """ One function that performs either initialization or an update.
+        Pass m={} to initialize
+    """
     if m:
         return rvar_update(m=m, x=x)
     else:
-        return rvar_init(rho=alpha, n=n)
+        return rvar_init(rho=rho, n=n)
 
 
 def rvar_init(rho: float, n=10) -> dict:
@@ -59,21 +61,21 @@ def rvar_init(rho: float, n=10) -> dict:
     """
     assert 0 <= rho <= 1
     state = var_init()
-    state.update({'alpha': rho, 'burnin': n})
+    state.update({'rho': rho, 'n': n})
     return state
 
 
 def rvar_update(m: dict, x: float) -> dict:
-    if m['count'] < m['burnin']:
-        alpha = m['alpha']
+    if m['count'] < m['n']:
+        rho = m['rho']
         m = var_update(m, x)
-        m['alpha'] = alpha
+        m['rho'] = rho
         return m
     else:
         m['count'] += 1
-        alpha = m['alpha']
-        m['var'] = (1 - alpha) * (m['var'] + alpha * ((x - m['mean']) ** 2))
-        m['mean'] = (1 - alpha) * m['mean'] + alpha * x
+        rho = m['rho']
+        m['var'] = (1 - rho) * (m['var'] + rho * ((x - m['mean']) ** 2))
+        m['mean'] = (1 - rho) * m['mean'] + rho * x
         m['pvar'] = ((m['count'] - 1) / m['count']) * m['var']  # Not sure this really makes sense :)
         if m.get('M2'):
             del m['M2']
