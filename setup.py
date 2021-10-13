@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="momentum",
-    version="0.2.0",
+    version="0.2.1",
     description="Running estimates of moments",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -22,7 +22,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
-    packages=["momentum"],
+    packages=["momentum","momentum.skatertools"],
     test_suite='pytest',
     tests_require=['pytest','creme','scipy','numpy'],
     include_package_data=True,
