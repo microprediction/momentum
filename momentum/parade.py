@@ -1,4 +1,4 @@
-from momentum import rvar  # Could easily add skew, kurtosis
+from momentum.functions import rvar  # Could easily add skew, kurtosis
 from typing import Union, SupportsFloat, List
 
 
