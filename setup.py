@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="momentum",
-    version="0.1.3",
+    version="0.2.0",
     description="Running estimates of moments",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -19,6 +19,8 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
     packages=["momentum"],
     test_suite='pytest',
