@@ -37,7 +37,7 @@ File an issue if you need more help using this.
   
 ### Usage: running recency-weighted mean, var
 
-    from momentum import forgettingvar_init, forgettingvar_update
+    from momentum import rvar_init, rvar_update
     from pprint import pprint
     
     m = rvar_init(rho=0.01,n=15)
