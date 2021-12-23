@@ -26,7 +26,7 @@ setup(
     test_suite='pytest',
     tests_require=['pytest','creme','scipy','numpy'],
     include_package_data=True,
-    install_requires=["wheel","pathlib"],
+    install_requires=["wheel"],
     entry_points={
         "console_scripts": [
             "momentum=momentum.__main__:main",
