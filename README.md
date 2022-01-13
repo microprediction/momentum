@@ -1,16 +1,16 @@
 # momentum ![tests](https://github.com/microprediction/momentum/workflows/tests/badge.svg) ![deploy](https://github.com/microprediction/momentum/workflows/deploy/badge.svg)
-A mini-package for computing the running univariate mean, variance, kurtosis and skew
+A trivial mini-package for computing the running univariate mean, variance, kurtosis and skew
 
 - No dependencies ... not even numpy.
 - No classes ... unless you want them.
 - State is a dict, for trivial serialization. 
 - Tested against scipy, creme, statistics
 
-For multivariate see [precise](https://github.com/microprediction/precise/blob/main/precise/covariance/onlineempirical.py)
+For multivariate covariance updating, maybe see [precise](https://github.com/microprediction/precise). 
 
 ### Install 
 
-    %pip install momentum
+    pip install momentum
 
 ### Usage: running mean, var
 
