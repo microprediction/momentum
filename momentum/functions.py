@@ -44,11 +44,8 @@ def kurtosis_update(m: dict, x: float) -> dict:
     return m
 
 
-
-# Moving average mean and variance
-
-
 def rvar(m: dict, x: float = None, rho=0.01, n_emp=None):
+
     """ One function that performs either initialization or an update.
         Pass m={} to initialize
     """
@@ -84,7 +81,7 @@ def rvar_update(m: dict, x: float) -> dict:
     else:
         m['count'] += 1
         rho = m['rho']
-        m['var'] = (1 - rho) * (m['var'] + rho * ((x - m['mean']) ** 2))
+        m['var'] = (1 - rho) * (m['var']) + rho * ((x - m['mean']) ** 2)
         m['mean'] = (1 - rho) * m['mean'] + rho * x
         m['pvar'] = ((m['count'] - 1) / m['count']) * m['var']  # Not sure this really makes sense :)
         if m.get('M2'):

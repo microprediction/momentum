@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="momentum",
-    version="0.2.2",
+    version="0.2.4",
     description="Running estimates of moments",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -26,7 +26,7 @@ setup(
     test_suite='pytest',
     tests_require=['pytest','creme','scipy','numpy'],
     include_package_data=True,
-    install_requires=["wheel","pathlib"],
+    install_requires=["wheel"],
     entry_points={
         "console_scripts": [
             "momentum=momentum.__main__:main",
