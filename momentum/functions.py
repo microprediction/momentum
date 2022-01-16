@@ -44,26 +44,28 @@ def kurtosis_update(m: dict, x: float) -> dict:
     return m
 
 
-def rvar(m: dict, x: float = None, rho=0.01, n_emp=None):
+def rvar(m: dict, x: float = None, rho=0.01, n_emp=None, n=None):
 
     """ One function that performs either initialization or an update.
         Pass m={} to initialize
     """
     if not m or m.get('count') is None:
-        m = rvar_init(rho=rho, n_emp=n_emp)
+        m = rvar_init(rho=rho, n_emp=n_emp, n=n )
     if x is not None:
         m = rvar_update(m=m, x=x)
     return m
 
 
-def rvar_init(rho: float, n_emp=None) -> dict:
+def rvar_init(rho: float, n_emp=None, n=None) -> dict:
     """ Recency weighted running variance
     :param rho:  How much to use the most recent observation
     :param n_emp: How many obs to use standard variance calc for, before switching
     """
     assert 0 <= rho <= 1
     if n_emp is None:
-       if rho>0:
+       if n is not None:
+           n_emp = n # backward compat
+       elif rho>0:
           n_emp = int(math.ceil(1 / rho))
        else:
           raise ValueError('Cannot initialize. Need rho or n')
