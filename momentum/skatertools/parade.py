@@ -35,14 +35,14 @@ def parade(p: dict, x: Union[List[SupportsFloat], None], y: Union[SupportsFloat,
     if not p:
         k = len(x)
         p = {'predictions': [[] for _ in range(k)],  # Holds the cavalcade
-             'moments': [rvar({}, rho=rho, n=5) for _ in range(k)]}  # Could use kurtosis_init here for more moment
+             'moments': [rvar({}, rho=rho, n_emp=5) for _ in range(k)]}  # Could use kurtosis_init here for more moment
     else:
         assert len(x) == len(p['predictions'])  # 'k' is immutable
 
     if x is None and y is None:
         # This will "reset" the running moments, but keep the existing store of predictions and observations
         p_mean, p_std = parade_mean(p), parade_std(p)
-        p['moments'] = [rvar(rho=rho, n=5) for _ in range(k)]
+        p['moments'] = [rvar(rho=rho, n_emp=5) for _ in range(k)]
         return p_mean, p_std, p
     else:
         assessable = p['predictions'].pop(0)

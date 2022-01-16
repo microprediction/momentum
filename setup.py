@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="momentum",
-    version="0.2.1",
+    version="0.2.2",
     description="Running estimates of moments",
     long_description=README,
     long_description_content_type="text/markdown",
