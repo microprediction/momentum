@@ -41,6 +41,9 @@ def kurtosis_update(m: dict, x: float) -> dict:
     m['M2'] = m['M2'] + term1
     m['kurtosis'] = (m['count'] * m['M4']) / (m['M2'] * m['M2']) - 3
     m['skewness'] = m['M3'] / m['M2']
+    m['var'] = m['M2'] / (m['count'] - 1) if m['count'] > 1 else 0
+    m['pvar'] = m['M2'] / (m['count']) if m['count'] > 0 else 0
+    m['std'] = math.sqrt(m['var']) if m['var'] > 0 else 0
     return m
 
 
